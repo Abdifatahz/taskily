@@ -21,4 +21,16 @@ return [
         'saved' => 'Saved successfully',
         'removed' => 'Successfully removed',
     ],
+
+    'projects' => [
+        'name' => 'Projects',
+        'index_title' => 'Projects List',
+        'new_title' => 'New Project',
+        'create_title' => 'Create Project',
+        'edit_title' => 'Edit Project',
+        'show_title' => 'Show Project',
+        'inputs' => [
+            'name' => 'Name',
+        ],
+    ],
 ];
