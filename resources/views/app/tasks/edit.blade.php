@@ -28,11 +28,6 @@
                             @lang('crud.common.back')
                         </a>
 
-                        <a href="{{ route('tasks.create', $project->id) }}" class="btn btn-light">
-                            <i class="icon ion-md-add text-primary"></i>
-                            @lang('crud.common.create')
-                        </a>
-
                         <button type="submit" class="btn btn-primary float-right">
                             <i class="icon ion-md-save"></i>
                             @lang('crud.common.update')
