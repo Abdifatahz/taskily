@@ -11,66 +11,26 @@ class TaskPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the task can view any models.
+     *  This allow user to create tasks if this he/she owns projects of this tasks
      */
-    public function viewAny(User $user): bool
+    public function create(User $user, $project): bool
     {
-        return true;
+        return $user->id === $project->user_id;
     }
 
     /**
-     * Determine whether the task can view the model.
+     *  This allow user to Edit or update tasks if this he/she owns projects of this tasks
      */
-    public function view(User $user, Task $model): bool
+    public function update(User $user, Task $task): bool
     {
-        return true;
+        return $user->id === $task->project->user_id;
     }
 
     /**
-     * Determine whether the task can create models.
+     * This allow user to delete tasks if this he/she owns projects of this tasks
      */
-    public function create(User $user): bool
+    public function delete(User $user, Task $task): bool
     {
-        return true;
-    }
-
-    /**
-     * Determine whether the task can update the model.
-     */
-    public function update(User $user, Task $model): bool
-    {
-        return true;
-    }
-
-    /**
-     * Determine whether the task can delete the model.
-     */
-    public function delete(User $user, Task $model): bool
-    {
-        return true;
-    }
-
-    /**
-     * Determine whether the user can delete multiple instances of the model.
-     */
-    public function deleteAny(User $user): bool
-    {
-        return true;
-    }
-
-    /**
-     * Determine whether the task can restore the model.
-     */
-    public function restore(User $user, Task $model): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the task can permanently delete the model.
-     */
-    public function forceDelete(User $user, Task $model): bool
-    {
-        return false;
+        return $user->id === $task->project->user_id;
     }
 }

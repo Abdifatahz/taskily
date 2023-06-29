@@ -19,7 +19,7 @@ class TaskController extends Controller
      */
     public function create(Request $request, Project $project): View
     {
-        $this->authorize('create', Task::class);
+        $this->authorize('create', [Task::class, $project]);
 
         $users = User::pluck('name', 'id');
 
@@ -32,8 +32,7 @@ class TaskController extends Controller
     public function store(Request $request, Project $project): RedirectResponse
     {
 
-
-        $this->authorize('create', Task::class);
+        $this->authorize('create', [Task::class, $project]);
 
         $validated = $request->validate([
             'name' => ['required', 'max:255', 'string','unique:tasks,name'],
