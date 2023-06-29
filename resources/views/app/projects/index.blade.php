@@ -15,7 +15,7 @@
                 <div class="card text-dark bg-white m-4 h-64 col-sm-3" style="min-height:150px;border:none">
                     <div class="card-body p-4 bg-white b-0">
                         <h5 class="card-title">{{ $project->name ?? '-' }}</h5>
-                        <span>{{ $project->tasks->count() }} Tasks</span>
+                        <span>{{ $project->tasks_count }} Tasks</span>
                         @can('view', $project)
                             <a href="{{ route('projects.show', $project) }}">
                                 <button type="button" class="btn">

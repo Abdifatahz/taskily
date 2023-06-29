@@ -33,4 +33,19 @@ return [
             'name' => 'Name',
         ],
     ],
+
+    'tasks' => [
+        'name' => 'Tasks',
+        'index_title' => 'Tasks List',
+        'new_title' => 'New Task',
+        'create_title' => 'Create Task',
+        'edit_title' => 'Edit Task',
+        'show_title' => 'Show Task',
+        'inputs' => [
+            'name' => 'Name',
+            'priority' => 'Priority',
+            'project_id' => 'Project',
+            'user_id' => 'User',
+        ],
+    ],
 ];
