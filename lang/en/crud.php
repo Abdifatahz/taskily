@@ -14,7 +14,7 @@ return [
         'delete' => 'Delete',
         'delete_selected' => 'Delete selected',
         'search' => 'Search...',
-        'back' => 'Back to Index',
+        'back' => 'Back to Projects',
         'are_you_sure' => 'Are you sure?',
         'no_items_found' => 'No items found',
         'created' => 'Successfully created',

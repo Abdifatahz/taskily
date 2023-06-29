@@ -2,7 +2,16 @@
 
 @section('content')
     <div class="container">
-        <div class="card">
+        <div class="card border-0">
+            <div class="card-body d-flex justify-content-between">
+                <div class="mt-4">
+                    <div class="mb-4">
+                        <h1>{{ $project->name ?? '-' }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card border-0 mt-4">
             <div class="card-body">
                 <h4 class="card-title">
                     <a href="{{ route('projects.show', $project->id) }}" class="mr-4"><i

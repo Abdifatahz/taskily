@@ -23,6 +23,12 @@
                                 </button>
                             </a>
                         @endcan
+                        @can('create', App\Models\Project::class)
+                            <a href="{{ route('tasks.create', $project->id) }}" class="btn">
+                                <i class="icon ion-md-add"></i>
+                            </a>
+                        @endcan
+
                     </div>
 
                     <div class="card-footer bg-white m-0 p-0">
