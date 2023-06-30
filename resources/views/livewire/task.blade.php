@@ -1,15 +1,21 @@
      <ul class="list-group rounded-0 my-4 border-0" wire:sortable="updateTaskOrder">
-         <button type="button" class="list-group-item list-group-item-action active bg-dark text-light border-0">
-             Tasks
-         </button>
+         <div type="button" class="list-group-item list-group-item-action active bg-dark text-light border-0">
+             <div class="d-flex justify-content-between align-items-center align-self-baseline">
+                 <span class="col-sm-4 mr-4">Task</span>
+                 <span>Priority</span>
+                 <span></span>
+             </div>
+         </div>
 
          @forelse ($tasks as $task)
              <li class="list-group-item border-0 m-0 py-2" wire:sortable.item="{{ $task->id }}" draggable="true"
                  wire:key="{{ $task->id }}">
                  <div class="d-flex justify-content-between align-items-center align-self-baseline">
 
-                     <p class="col-sm-6"><i class="icon ion-md-resize"></i> {{ $task->name }}</p>
-                     <span class="badge badge-info pt-2" style="width:10%">{{ strtoupper($task->priority) }}</span>
+                     <p class="col-sm-6"><i class="icon ion-md-resize"> </i> {{ $task->name }}</p>
+                     <span>#{{ $task->position }}</span>
+                     <span class="badge badge-info pt-2" style="width:10%">
+                         {{ strtoupper($task->priority) }}</span>
                      <div class="d-flex justify-content-around">
                          @can('update', $task)
                              <a href="{{ route('tasks.edit', [$task->project_id, $task]) }}">

@@ -39,9 +39,17 @@ class TaskController extends Controller
             'priority' => ['required', 'in:low,medium,heigh'],
         ]);
 
+        // New Task will be added after least priority one
+        $task_position   =    $project->tasks()
+                ->orderByDesc("position")
+                ->pluck("position")
+                ->first();
+
+        // Data that not coming from form
         $dynamic  = [
-            'user_id'      => auth::id(),
-            'project_id'    => $project->id
+                   'user_id'    => auth::id(),
+                   'project_id' => $project->id,
+                   'position'   => $task_position
         ];
 
         $task = Task::create($validated + $dynamic);
