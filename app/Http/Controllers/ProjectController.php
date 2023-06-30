@@ -19,6 +19,7 @@ class ProjectController extends Controller
 
         $projects = auth()->user()
             ->projects()
+            ->with("tasks")
             ->withCount("tasks")
             ->latest()
             ->paginate(9);
