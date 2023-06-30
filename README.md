@@ -30,9 +30,9 @@ DB_PASSWORD=YOUR_DB_PASSWORD
 
 * Start the Laravel server `php artisan serve`
 
-Access dashboard
- You can access dashboard by registrating new User or
- You can login faked users data by using //password AS a password.
+### Access dashboard
+ - You can access dashboard by registrating new User. or
+ - You can login faked users data by using `password` AS a password.
 
 ### License
 TASKILY is licensed under the MIT license. Enjoy!
