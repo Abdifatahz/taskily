@@ -51,7 +51,7 @@ class ProjectController extends Controller
         $project = Project::create($validated + ['user_id' => auth::id()]);
 
         return redirect()
-            ->route('projects.edit', $project)
+            ->route('projects.show', $project)
             ->withSuccess(__('crud.common.created'));
     }
 
