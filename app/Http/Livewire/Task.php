@@ -14,7 +14,7 @@ class Task extends Component
     public function render()
     {
         $tasks  =   $this->project->tasks()
-            ->orderBy('position')
+            ->orderByDesc('position')
             ->get();
 
         return view('livewire.task', compact('tasks'));
