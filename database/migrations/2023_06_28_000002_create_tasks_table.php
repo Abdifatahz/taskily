@@ -13,7 +13,6 @@ return new class () extends Migration {
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->enum('priority', ['low', 'medium', 'heigh']);
             $table->foreignId('user_id');
             $table->foreignId('project_id');
             $table->timestamps();

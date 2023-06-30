@@ -23,7 +23,24 @@ class TaskController extends Controller
 
         $users = User::pluck('name', 'id');
 
-        return view('app.tasks.create', compact('project', 'users'));
+        /**
+         *  New Task default Priority will be after least prority task
+         * Otherwise it's default to 1
+        **/
+
+        $existing_lowest_priority_task  =   $project->tasks()
+                ->orderByDesc("priority")
+                ->pluck("priority")
+                ->first();
+
+        $default_task_priority = 1;
+
+        if($existing_lowest_priority_task) {
+            $default_task_priority += $existing_lowest_priority_task;
+        }
+
+
+        return view('app.tasks.create', compact('project', 'users', 'default_task_priority'));
     }
 
     /**
@@ -36,20 +53,13 @@ class TaskController extends Controller
 
         $validated = $request->validate([
             'name' => ['required', 'max:255', 'string','unique:tasks,name'],
-            'priority' => ['required', 'in:low,medium,heigh'],
+            'priority' => ['required', 'integer'],
         ]);
-
-        // New Task will be added after least priority one
-        $task_position   =    $project->tasks()
-                ->orderByDesc("position")
-                ->pluck("position")
-                ->first();
 
         // Data that not coming from form
         $dynamic  = [
                    'user_id'    => auth::id(),
                    'project_id' => $project->id,
-                   'position'   => $task_position
         ];
 
         $task = Task::create($validated + $dynamic);
@@ -82,7 +92,7 @@ class TaskController extends Controller
 
         $validated = $request->validate([
             'name' => ['required', 'max:255', 'string','unique:tasks,name,'.$task->id],
-            'priority' => ['required', 'in:low,medium,heigh'],
+            'priority' => ['required', 'integer'],
         ]);
 
         $task->update($validated);

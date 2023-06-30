@@ -14,7 +14,7 @@ class Task extends Component
     public function render()
     {
         $tasks  =   $this->project->tasks()
-            ->orderBy('position')
+            ->orderBy('priority')
             ->get();
 
         return view('livewire.task', compact('tasks'));
@@ -24,8 +24,8 @@ class Task extends Component
     {
         foreach($tasks as $task) {
             $id         =    $task['value'];
-            $position   =    $task['order'];
-            $task = TaskModel::find($id)->update(['position' => $position]);
+            $priority   =    $task['order'];
+            $task = TaskModel::find($id)->update(['priority' => $priority]);
         }
     }
 

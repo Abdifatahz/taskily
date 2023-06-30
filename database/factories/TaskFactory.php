@@ -24,7 +24,7 @@ class TaskFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'priority' => 'low',
+            'priority' => rand(1, 10),
             'user_id' => \App\Models\User::factory(),
             'project_id' => \App\Models\Project::factory(),
         ];

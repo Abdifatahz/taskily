@@ -1,7 +1,7 @@
      <ul class="list-group rounded-0 my-4 border-0" wire:sortable="updateTaskOrder">
          <div type="button" class="list-group-item list-group-item-action active bg-dark text-light border-0">
              <div class="d-flex justify-content-between align-items-center align-self-baseline">
-                 <span class="col-sm-4 mr-4">Task</span>
+                 <span class="col-sm-3 mr-4">Task</span>
                  <span>Priority</span>
                  <span></span>
              </div>
@@ -12,10 +12,11 @@
                  wire:key="{{ $task->id }}">
                  <div class="d-flex justify-content-between align-items-center align-self-baseline">
 
-                     <p class="col-sm-6"><i class="icon ion-md-resize"> </i> {{ $task->name }}</p>
-                     <span>#{{ $task->position }}</span>
-                     <span class="badge badge-info pt-2" style="width:10%">
-                         {{ strtoupper($task->priority) }}</span>
+                     <p class="col-sm-4"><i class="icon ion-md-resize"> </i> {{ $task->name }}</p>
+
+                     <span class="text-info font-bold">
+                         #{{ $task->priority }}
+                     </span>
                      <div class="d-flex justify-content-around">
                          @can('update', $task)
                              <a href="{{ route('tasks.edit', [$task->project_id, $task]) }}">

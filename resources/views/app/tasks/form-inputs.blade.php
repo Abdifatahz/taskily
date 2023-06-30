@@ -7,12 +7,9 @@
     </x-inputs.group>
 
     <x-inputs.group class="col-sm-12">
-        <x-inputs.select name="priority" label="Priority">
-            @php $selected = old('priority', ($editing ? $task->priority : '')) @endphp
-            <option value="low" {{ $selected == 'low' ? 'selected' : '' }}>Low</option>
-            <option value="medium" {{ $selected == 'medium' ? 'selected' : '' }}>Medium</option>
-            <option value="heigh" {{ $selected == 'heigh' ? 'selected' : '' }}>Heigh</option>
-        </x-inputs.select>
+        <x-inputs.number name="priority" label="Priority" :value="old('priority', $editing ? $task->priority : $default_task_priority)" maxlength="255" placeholder="Priority eg. 1"
+            required>
+        </x-inputs.number>
     </x-inputs.group>
 
 </div>
